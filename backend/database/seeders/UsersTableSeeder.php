@@ -15,7 +15,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $names = [
-            'hiroya' => 'ヒロヤ',
+            'testuser1' => 'テストユーザ1',
+            'testuser2' => 'テストユーザ2',
+            'testuser3' => 'テストユーザ3',
         ];
 
         foreach ($names as $name_en => $name_jp) {
@@ -23,7 +25,7 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'name' => $name_jp, // ユーザー名
                 'email' => $name_en . '@example.com', // 👈 メールアドレス
-                'password' => bcrypt('xxxxxxxx') // 👈 パスワード
+                'password' => 'password' // 👈 パスワード
             ]);
         }
     }
