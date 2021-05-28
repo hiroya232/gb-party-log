@@ -32,20 +32,20 @@ class PostController extends Controller
             'title.required' => 'タイトルが入力されていません',
             'body.required' => 'メッセージが入力されていません'
         ];
-        // $validator = Validator::make($form, $rules, $message);
+        $validator = Validator::make($form, $rules, $message);
 
-        // if ($validator->fails()) {
-        //     return redirect('/post')
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // } else {
+        if ($validator->fails()) {
+            return redirect('/post')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
             unset($form['_token']);
             $post->user_id = $request->user_id;
             $post->title = $request->title;
             $post->body = $request->body;
             $post->save();
             return redirect('/post');
-        // }
+        }
     }
 
     public function show($id)
