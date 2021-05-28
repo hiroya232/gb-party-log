@@ -24,28 +24,28 @@ class PostController extends Controller
         $rules = [
             'user_id' => 'integer|required', // 2項目以上条件がある場合は「 | 」を挟む
             'title' => 'required',
-            'message' => 'required',
+            'body' => 'required',
         ];
         $message = [
             'user_id.integer' => 'System Error',
             'user_id.required' => 'System Error',
             'title.required' => 'タイトルが入力されていません',
-            'message.required' => 'メッセージが入力されていません'
+            'body.required' => 'メッセージが入力されていません'
         ];
-        $validator = Validator::make($form, $rules, $message);
+        // $validator = Validator::make($form, $rules, $message);
 
-        if ($validator->fails()) {
-            return redirect('/post')
-                ->withErrors($validator)
-                ->withInput();
-        } else {
+        // if ($validator->fails()) {
+        //     return redirect('/post')
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // } else {
             unset($form['_token']);
             $post->user_id = $request->user_id;
             $post->title = $request->title;
-            $post->message = $request->message;
+            $post->body = $request->body;
             $post->save();
             return redirect('/post');
-        }
+        // }
     }
 
     public function show($id)

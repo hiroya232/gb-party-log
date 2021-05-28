@@ -4,6 +4,9 @@
 <!-- 投稿フォーム -->
 <form action="/post" method="post">
     {{ csrf_field() }}
+
+    <input type="hidden" name="user_id" value="1" />
+
     <input
         type="text"
         class="form"
