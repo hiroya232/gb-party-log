@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'name' => $name_jp, // ユーザー名
                 'email' => $name_en . '@example.com', // 👈 メールアドレス
-                'password' => 'password' // 👈 パスワード
+                'password' => bcrypt('password') // 👈 パスワード
             ]);
         }
     }
